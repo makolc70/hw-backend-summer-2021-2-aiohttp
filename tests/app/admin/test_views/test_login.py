@@ -1,4 +1,5 @@
 from aiohttp.test_utils import TestClient
+from aiohttp import web
 
 from app.web.config import Config
 

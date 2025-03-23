@@ -23,6 +23,7 @@ class TestQuestionAddView:
                 ],
             },
         )
+        print(response.status)
         assert response.status == 200
 
         data = await response.json()

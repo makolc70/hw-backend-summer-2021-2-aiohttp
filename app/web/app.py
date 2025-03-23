@@ -12,6 +12,12 @@ from app.web.logger import setup_logging
 from app.web.middlewares import setup_middlewares
 from app.web.routes import setup_routes
 
+import base64
+from cryptography import fernet
+from aiohttp_session import setup as setup_session
+from aiohttp_session.cookie_storage import EncryptedCookieStorage
+
+
 
 class Application(AiohttpApplication):
     config: Config | None = None
@@ -49,5 +55,7 @@ def setup_app(config_path: str) -> Application:
     setup_config(app, config_path)
     setup_routes(app)
     setup_middlewares(app)
+
+
     setup_store(app)
     return app

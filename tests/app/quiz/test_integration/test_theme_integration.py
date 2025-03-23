@@ -7,11 +7,13 @@ class TestThemeIntegration:
             "/quiz.add_theme",
             json={"title": "integration"},
         )
+        print("GOT: ", add_theme_response.status)
         assert add_theme_response.status == 200
 
         add_theme_response_data = await add_theme_response.json()
 
         list_themes_response = await auth_cli.get("/quiz.list_themes")
+        print("GOT from list: ", list_themes_response.status)
         assert list_themes_response.status == 200
 
         list_themes_response_data = await list_themes_response.json()
