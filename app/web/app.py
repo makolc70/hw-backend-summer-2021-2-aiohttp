@@ -57,6 +57,7 @@ def setup_app(config_path: str) -> Application:
     setup_middlewares(app)
     setup_store(app)
 
-    fernet_key = base64.urlsafe_b64encode(b"0123456789ABCDEF0123456789ABCDEF")
+    fernet_key = b"0123456789ABCDEF0123456789ABCDEF"  # ровно 32 байта
     setup_session(app, EncryptedCookieStorage(fernet_key))
+
     return app
