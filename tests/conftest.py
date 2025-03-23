@@ -26,7 +26,7 @@ def event_loop(request) -> Iterator[AbstractEventLoop]:
 @pytest.fixture(scope="session")
 def session_secret_key() -> bytes:
     # постоянный ключ на время тестов
-    fernet_key = fernet.Fernet.generate_key()
+    fernet_key = base64.urlsafe_b64decode("0123456789ABCDEF0123456789ABCDEF")
     return base64.urlsafe_b64decode(fernet_key)
 
 @pytest.fixture(scope="session")

@@ -55,7 +55,8 @@ def setup_app(config_path: str) -> Application:
     setup_config(app, config_path)
     setup_routes(app)
     setup_middlewares(app)
-
-
     setup_store(app)
+
+    fernet_key = base64.urlsafe_b64decode("0123456789ABCDEF0123456789ABCDEF")
+    setup_session(app, EncryptedCookieStorage(fernet_key))
     return app
